@@ -8,6 +8,7 @@
 <a href="https://twitter.com/CautiousNV"><img src='https://img.shields.io/badge/Twitter-Account-blue?logo=twitter' alt='Twitter Account' /></a>
 <a href="https://github.com/MahyarNV/cautious-pysql"><img src='https://img.shields.io/badge/Build-Passing-success' alt='Build Passing' /></a>
 </div>
+
 # cautious-pysql
 CTpysql helps you to code mysql queries as fast as possible 🚄🔥
 
