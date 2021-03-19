@@ -3,6 +3,11 @@
   ![ctpysql](https://github.com/MahyarNV/cautious-pysql/blob/e740034826c6fa2ec46b61e9c67d1011e31c38b3/media/ctpysql.png)
 
 </div>
+<div align="center">
+<a href="https://discord.com/invite/aHXATxBuAh"><img src='https://img.shields.io/badge/Discord-Server-868fff?logo=discord' alt='Discord Server' /></a>
+<a href="https://twitter.com/CautiousNV"><img src='https://img.shields.io/badge/Twitter-Account-blue?logo=twitter' alt='Twitter Account' /></a>
+<a href="https://github.com/MahyarNV/cautious-pysql"><img src='https://img.shields.io/badge/Build-Passing-success' alt='Build Passing' /></a>
+</div>
 # cautious-pysql
 CTpysql helps you to code mysql queries as fast as possible 🚄🔥
 
