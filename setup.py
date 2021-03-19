@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='ctpysql',
-    version='0.0.1',
+    version='0.0.2',
     description='This library is for run MYSQL queries as fast as possible 🚄🔥!',
     py_modules=["ctpysql"],
     package_dir={'': 'src'},
