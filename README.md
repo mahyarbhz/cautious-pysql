@@ -26,3 +26,14 @@ then make an object from *ctpysql* class using this connection:
 after these steps you are able to use this library correctly, for example, insert query using dictionary values:
 
 `obj.insert('users', {'username': 'user1', 'password': 'password1'})`
+
+### Supported queries
+supported queries at this version (they will be more soon):
+
+mysql insert query:
+
+`insert('table', {dictionary values})`
+
+mysql table truncate query:
+
+`truncate('table')`
