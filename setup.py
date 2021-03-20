@@ -10,8 +10,8 @@ setup(
     py_modules=["ctpysql"],
     package_dir={'': 'src'},
     install_requires = [
-        "mysql-connector ~= 2.2.9",
-        "mysql-connector-python ~= 8.0.23",
+        "mysql-connector >= 2.2.9",
+        "mysql-connector-python >= 8.0.23",
     ],
     extras_require = {
         "dev": [

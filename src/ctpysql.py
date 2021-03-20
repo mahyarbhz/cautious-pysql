@@ -30,7 +30,7 @@ class ctpysql:
         except Error as e:
             return e
 
-    def fetch(self, table, case, dic):
+    def fetch(self, table, case, type, dic):
         condition = ""
         for i in dic:
             if condition != "":
@@ -41,7 +41,11 @@ class ctpysql:
 
         sql = "SELECT * FROM {0} WHERE {1}".format(table, condition)
         try:
-            cursor = self.conn.cursor()
+            if type == 'dic' or type == 'dictionary':
+                cursor = self.conn.cursor(dictionary=True)
+
+            else:
+                cursor = self.conn.cursor()
             cursor.execute(sql)
             if case == 'all':
                 row = cursor.fetchall()
