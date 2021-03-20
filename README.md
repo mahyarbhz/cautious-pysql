@@ -41,10 +41,14 @@ after these steps you are able to use this library correctly, for example, inser
 ### Supported queries
 supported queries at this version (they will be more soon):
 
-mysql insert query:
+Mysql insert query:
 
 `insert('table', {dictionary values})`
 
-mysql table truncate query:
+Mysql table truncate query:
 
 `truncate('table')`
+
+Mysql select query (object return):
+
+`fetch('table', 'case [all or one]', 'type [dic or None]', {dictionary values (for select)})`
