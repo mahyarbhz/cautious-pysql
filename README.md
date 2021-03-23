@@ -40,15 +40,26 @@ after these steps you are able to use this library correctly, for example, inser
 
 ### Supported queries
 supported queries at this version (they will be more soon):
-
-Mysql insert query:
+<hr>
+Mysql insert query (rowid return):
 
 `insert('table', {dictionary values})`
-
+<hr>
 Mysql table truncate query:
 
 `truncate('table')`
-
+<hr>
 Mysql select query (object return):
 
 `fetch('table', 'case [all or one]', 'type [dic or None]', {dictionary values (for select)})`
+<hr>
+Mysql update query (affected rows count return):
+
+`update('table', 'condition column name', 'condition column value', **data)`
+
+Example:
+```update('users', 'username', usernameVar, password=123, email=a@a.com)```
+<hr>
+Mysql delete query (deleted rows count return):
+
+`delete('table', 'condition column name', 'condition value')`
