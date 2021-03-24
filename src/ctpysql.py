@@ -19,6 +19,7 @@ class ctpysql:
 
 
     def insert (self, table, dic):
+        # dic: insert values with {'dic': 'dictionary'}
         columns = ', '.join("`" + str(i).replace('/', '_') + "`" for i in dic.keys())
         values = ', '.join("'" + str(i).replace('/', '_') + "'" for i in dic.values())
         sql = "INSERT INTO {0} ({1}) VALUES ({2})".format(table, columns, values)
@@ -33,6 +34,9 @@ class ctpysql:
             return e
 
     def fetch(self, table, case, type, dic):
+        # case: all or one
+        # type: dic|dictionary or ... (everything else fetch it simply)
+        # dic: condition values with {'dic': 'dictionary'}
         condition = ""
         for i in dic:
             if condition != "":
@@ -60,7 +64,10 @@ class ctpysql:
         except Error as e:
             return e
 
-    def update(self, table, condition, condition_value, **data):
+    def update(self, table, condition=None, condition_value=None, **data):
+        # condition: your condition for update
+        # condition_value: your condition value for condition
+        # data: kwargs data tp update, like data='data', username='newUsername'
         sql = "UPDATE {0} SET ".format(table)
         i = 0
         for key, value in data.items():
@@ -69,7 +76,8 @@ class ctpysql:
                 sql += ", "
             i += 1
 
-        sql += " WHERE {0} = {1}".format(condition, condition_value)
+        if condition:
+            sql += " WHERE {0} = {1}".format(condition, condition_value)
 
         try:
             cursor = self.conn.cursor()
@@ -82,6 +90,8 @@ class ctpysql:
             return e
 
     def delete(self, table, condition, condition_value):
+        # condition: your condition for update
+        # condition_value: your condition value for condition
         sql = "DELETE FROM {0} WHERE {1} = {2} ".format(table, condition, condition_value)
         try:
             cursor = self.conn.cursor()
