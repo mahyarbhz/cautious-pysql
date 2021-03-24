@@ -15,7 +15,8 @@ setup(
     ],
     extras_require = {
         "dev": [
-            "pytest>=6.2.2"
+            "pytest >= 6.2.2",
+            "pytest-mysql >= 2.0.3"
         ]
     },
     long_description=long_description,

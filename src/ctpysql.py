@@ -71,7 +71,12 @@ class ctpysql:
         sql = "UPDATE {0} SET ".format(table)
         i = 0
         for key, value in data.items():
-            sql += "{0} = {1}".format(key, value)
+            if type(value) is str:
+                sql += "{0} = '{1}'".format(key, value)
+
+            else:
+                sql += "{0} = {1}".format(key, value)
+
             if i < len(data.items())-1:
                 sql += ", "
             i += 1
