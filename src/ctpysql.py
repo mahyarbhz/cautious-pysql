@@ -121,3 +121,24 @@ class ctpysql:
 
         except Error as e:
             return e
+
+    def order(self, table, **data):
+        # table: table name
+        # **data: kwargs data like: name="ASC", id="DESC"
+        sql = "SELECT * FROM {0} ORDER BY ".format(table)
+        i = 0
+        for key, value in data.items():
+            sql += "{0} {1}".format(key, value)
+
+            if i < len(data.items())-1:
+                sql += ", "
+            i += 1
+
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(sql)
+            return cursor.fetchall()
+            cursor.close()
+
+        except Error as e:
+            return e
