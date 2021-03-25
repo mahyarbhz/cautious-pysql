@@ -63,3 +63,14 @@ Example:
 Mysql delete query (deleted rows count return):
 
 `delete('table', 'condition column name', 'condition value')`
+<hr>
+Mysql drop query ("Success" or error return):
+
+`delete('table', 'condition column name', 'condition value')`
+<hr>
+Mysql order by query (fetched items return):
+
+`order('table', **data(column1="order like ASC", column2="order like DESC"))`
+
+Example:
+```order('products', name="ASC", id="DESC")```
