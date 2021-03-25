@@ -66,7 +66,13 @@ Mysql delete query (deleted rows count return):
 <hr>
 Mysql drop query ("Success" or error return):
 
-`delete('table', 'condition column name', 'condition value')`
+`drop('case', 'name')`
+
+Example:
+```drop('table', 'product')```
+
+Example2:
+```drop('view', '[mysql queries]')```
 <hr>
 Mysql order by query (fetched items return):
 
