@@ -107,3 +107,15 @@ class ctpysql:
 
         except Error as e:
             return e
+
+    def drop(self, case, name):
+        sql = "DROP {0} {1}".format(case, name)
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(sql)
+            self.conn.commit()
+            cursor.close()
+            return "Success"
+
+        except Error as e:
+            return e
