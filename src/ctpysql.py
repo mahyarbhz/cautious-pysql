@@ -109,6 +109,8 @@ class ctpysql:
             return e
 
     def drop(self, case, name):
+        # case: can define what we want to drop, like: 'table' or 'veiw'
+        # name: name of our case
         sql = "DROP {0} {1}".format(case, name)
         try:
             cursor = self.conn.cursor()
