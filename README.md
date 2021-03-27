@@ -80,3 +80,10 @@ Mysql order by query (fetched items return):
 
 Example:
 ```order('products', name="ASC", id="DESC")```
+<hr>
+Mysql create table query ("Success" or error return):
+
+`create_table('table name', **data)`
+
+Example:
+```create_table('users', id="INT AUTO_INCREMENT PRIMARY KEY", name="VARCHAR(255)")```
