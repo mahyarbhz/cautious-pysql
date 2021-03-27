@@ -28,7 +28,7 @@ You may import mysql.connector to work with ctpysql, just use:
 
 and make a connection like this:
 
-`cnx = connection.MySQLConnection(user='root', password='password, host='127.0.0.1', database='db')`
+`cnx = connection.MySQLConnection(user='root', password='password', host='127.0.0.1', database='db')`
 
 then make an object from *ctpysql* class using this connection:
 
