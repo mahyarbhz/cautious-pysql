@@ -12,8 +12,8 @@
 # cautious-pysql
 CTpysql helps you to code mysql queries as fast as possible 🚄🔥
 
-### Usage
-#### Installation
+## Usage
+### Installation
 Use `pip install ctpysql` to install the *ctpysql* and it's dependencies on your pc (or venv).
 
 import module with:
@@ -21,7 +21,7 @@ import module with:
 `from ctpysql import ctpysql`
 
 to use it in your project.
-#### How it works?
+### How it works?
 You may import mysql.connector to work with ctpysql, just use:
 
 `from mysql.connector import (connection, Error)`
@@ -38,25 +38,31 @@ after these steps you are able to use this library correctly, for example, inser
 
 `obj.insert('users', {'username': 'user1', 'password': 'password1'})`
 
-### Supported queries
-supported queries at this version (they will be more soon):
+## Supported queries
+Supported queries at this version (they will be more soon):
 <hr>
-Mysql insert query (rowid return):
+
+### Insert
+Last rowid inserted return
 
 `insert('table', {dictionary values})`
 <hr>
-Mysql table truncate query:
+Truncate:
 
 `truncate('table')`
 <hr>
-Mysql select query (object return):
+
+### Select
+Selected row(s) return
 
 `fetch('table', 'case [all or one]', 'type [dic or None]', **data)`
 
 Example:
 `fetch('users', 'one', None, id=3)`
 <hr>
-select all in a table (array or dictionary return):
+
+#### Select all
+Selected row(s) return
 
 `fetchall('table', 'type [dic or None]')`
 
@@ -67,7 +73,9 @@ Example 2:
 `fetchall('products', 'dic')`
 
 <hr>
-Mysql update query (affected rows count return):
+
+### Update
+Affected rows count return
 
 `update('table', 'condition column name', 'condition column value', **data)`
 
@@ -75,11 +83,15 @@ Example:
 `update('users', 'username', usernameVar, password=123, email=a@a.com)`
 
 <hr>
-Mysql delete query (deleted rows count return):
+
+### Delete
+Deleted rows count return
 
 `delete('table', 'condition column name', 'condition value')`
 <hr>
-Mysql drop query ("Success" or error return):
+
+### Drop
+"Success" or error return
 
 `drop('case', 'name')`
 
@@ -89,16 +101,33 @@ Example:
 Example2:
 `drop('view', '[mysql queries]')`
 <hr>
-Mysql order by query (fetched items return):
+
+### Order
+Fetched items return
 
 `order('table', **data(column1="order like ASC", column2="order like DESC"))`
 
 Example:
 `order('products', name="ASC", id="DESC")`
 <hr>
-Mysql create table query ("Success" or error return):
+
+### Create table
+"Success" or error return
 
 `create_table('table name', **data)`
 
 Example:
 `create_table('users', id="INT AUTO_INCREMENT PRIMARY KEY", name="VARCHAR(255)")`
+<hr>
+
+## Don't forget!
+Don't forget this is a class and you should call this functions from an object of class. A full example here:
+
+```python
+from mysql.connector import (connection, Error)
+from ctpysql import ctpysql
+
+connection = connection.MySQLConnection(user='root', password='password', host='127.0.0.1', database='testdb')
+object = ctpysql(cnx)
+object.insert('products', {'name': 'Laptop', 'brand': 'Asus'})
+```
