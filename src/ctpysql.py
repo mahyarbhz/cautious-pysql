@@ -11,13 +11,14 @@ class ctpysql:
         try:
             cursor.execute(sql)
             self.conn.commit()
-            return "Success"
+            freturn = "Success"
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
 
     def insert (self, table_name, dic):
         # dic: insert values with {'dic': 'dictionary'}
@@ -28,13 +29,14 @@ class ctpysql:
         try:
             cursor.execute(sql)
             self.conn.commit()
-            return cursor.lastrowid
+            freturn = cursor.lastrowid
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
 
     def fetch(self, table_name, case, type, **data):
         # case: all or one
@@ -64,13 +66,14 @@ class ctpysql:
             elif case == 'one':
                 row = cursor.fetchone()
 
-            return row
+            freturn = row
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
 
     def update(self, table_name, condition=None, condition_value=None, **data):
         # condition: your condition for update
@@ -89,19 +92,24 @@ class ctpysql:
                 sql += ", "
 
         if condition:
-            sql += " WHERE {0} = {1}".format(condition, condition_value)
+            if type(condition_value) is str:
+                sql += " WHERE {0} = '{1}'".format(condition, condition_value)
+
+            else:
+                sql += " WHERE {0} = {1}".format(condition, condition_value)
 
         cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
             self.conn.commit()
-            return cursor.rowcount
+            freturn = cursor.rowcount
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
 
     def delete(self, table_name, condition, condition_value):
         # condition: your condition for update
@@ -111,13 +119,14 @@ class ctpysql:
         try:
             cursor.execute(sql)
             self.conn.commit()
-            return cursor.rowcount
+            freturn = cursor.rowcount
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
 
     def drop(self, case, name):
         # case: can define what we want to drop, like: 'table' or 'veiw'
@@ -126,13 +135,14 @@ class ctpysql:
         cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
-            return "Success"
+            freturn = "Success"
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
 
     def order(self, table_name, **data):
         # data: kwargs data like: name="ASC", id="DESC"
@@ -147,13 +157,14 @@ class ctpysql:
         cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
-            return cursor.fetchall()
+            freturn = cursor.fetchall()
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
 
     def create_table(self, table_name, **data):
         # data: kwargs data like: id="INT AUTO_INCREMENT PRIMARY KEY"
@@ -171,10 +182,11 @@ class ctpysql:
         cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
-            return "Success"
+            freturn = "Success"
 
         except Error as e:
-            return e
+            freturn = e
 
         finally:
             cursor.close()
+            return freturn
