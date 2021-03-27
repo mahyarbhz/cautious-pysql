@@ -51,7 +51,10 @@ Mysql table truncate query:
 <hr>
 Mysql select query (object return):
 
-`fetch('table', 'case [all or one]', 'type [dic or None]', {dictionary values (for select)})`
+`fetch('table', 'case [all or one]', 'type [dic or None]', **data)`
+
+Example:
+```fetch('users', 'one', None, id=3)```
 <hr>
 Mysql update query (affected rows count return):
 
