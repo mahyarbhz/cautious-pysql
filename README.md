@@ -54,14 +54,26 @@ Mysql select query (object return):
 `fetch('table', 'case [all or one]', 'type [dic or None]', **data)`
 
 Example:
-```fetch('users', 'one', None, id=3)```
+`fetch('users', 'one', None, id=3)`
+<hr>
+select all in a table (array or dictionary return):
+
+`fetchall('table', 'type [dic or None]')`
+
+Example 1:
+`fetchall('products', None)`
+
+Example 2:
+`fetchall('products', 'dic')`
+
 <hr>
 Mysql update query (affected rows count return):
 
 `update('table', 'condition column name', 'condition column value', **data)`
 
 Example:
-```update('users', 'username', usernameVar, password=123, email=a@a.com)```
+`update('users', 'username', usernameVar, password=123, email=a@a.com)`
+
 <hr>
 Mysql delete query (deleted rows count return):
 
@@ -72,21 +84,21 @@ Mysql drop query ("Success" or error return):
 `drop('case', 'name')`
 
 Example:
-```drop('table', 'product')```
+`drop('table', 'product')`
 
 Example2:
-```drop('view', '[mysql queries]')```
+`drop('view', '[mysql queries]')`
 <hr>
 Mysql order by query (fetched items return):
 
 `order('table', **data(column1="order like ASC", column2="order like DESC"))`
 
 Example:
-```order('products', name="ASC", id="DESC")```
+`order('products', name="ASC", id="DESC")`
 <hr>
 Mysql create table query ("Success" or error return):
 
 `create_table('table name', **data)`
 
 Example:
-```create_table('users', id="INT AUTO_INCREMENT PRIMARY KEY", name="VARCHAR(255)")```
+`create_table('users', id="INT AUTO_INCREMENT PRIMARY KEY", name="VARCHAR(255)")`
