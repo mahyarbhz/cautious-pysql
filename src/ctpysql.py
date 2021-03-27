@@ -61,12 +61,33 @@ class ctpysql:
         try:
             cursor.execute(sql)
             if case == 'all':
-                row = cursor.fetchall()
+                freturn = cursor.fetchall()
 
             elif case == 'one':
-                row = cursor.fetchone()
+                freturn = cursor.fetchone()
 
-            freturn = row
+            else:
+                freturn = "Incorrect parameter"
+
+        except Error as e:
+            freturn = e
+
+        finally:
+            cursor.close()
+            return freturn
+
+    def fetchall(self, table_name, type=None):
+        # type: dic|dictionary or ... (everything else fetch it simply)
+        sql = "SELECT * FROM {0}".format(table_name)
+        if type == 'dic' or type == 'dictionary':
+            cursor = self.conn.cursor(dictionary=True)
+
+        else:
+            cursor = self.conn.cursor()
+
+        try:
+            cursor.execute(sql)
+            freturn = cursor.fetchall()
 
         except Error as e:
             freturn = e
