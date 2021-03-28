@@ -120,6 +120,15 @@ Example:
 `create_table('users', id="INT AUTO_INCREMENT PRIMARY KEY", name="VARCHAR(255)")`
 <hr>
 
+### Between
+Fetched rows return
+
+`between('table name', 'type [dic or None]', 'condition column', 'first parameter', 'second parameter')`
+
+Example:
+`between('products', None, 'id', 1, 4)`
+<hr>
+
 ## Don't forget!
 Don't forget this is a class and you should call this functions from an object of class. A full example here:
 
