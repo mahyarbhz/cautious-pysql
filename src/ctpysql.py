@@ -211,3 +211,24 @@ class ctpysql:
         finally:
             cursor.close()
             return freturn
+
+    def between(self, table_name, type, condition_column, firstpram, secondpram):
+        # type: dic|dictionary or ... (everything else fetch it simply)
+        sql = "SELECT * FROM {0} WHERE {1} BETWEEN %s AND %s".format(table_name, condition_column)
+        data = (firstpram, secondpram)
+        if type == 'dic' or type == 'dictionary':
+            cursor = self.conn.cursor(dictionary=True)
+
+        else:
+            cursor = self.conn.cursor()
+
+        try:
+            cursor.execute(sql, data)
+            freturn = cursor.fetchall()
+
+        except Error as e:
+            freturn = e
+
+        finally:
+            cursor.close()
+            return freturn
