@@ -143,6 +143,20 @@ advanced_commit(query)
 ```
 <hr>
 
+### Advanced Fetch
+Fetched items return
+```
+query = "SELECT * FROM table WHERE ..."
+advanced_fetch(query)
+```
+
+Example:
+```python
+query = "SELECT * FROM products"
+advanced_fetch(query)
+```
+<hr>
+
 ## Don't forget!
 Don't forget this is a class and you should call this functions from an object of class. A full example here:
 

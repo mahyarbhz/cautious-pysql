@@ -246,3 +246,16 @@ class ctpysql:
         finally:
             cursor.close()
             return freturn
+
+    def advanced_fetch(self, query):
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(query)
+            freturn = cursor.fetchall()
+
+        except Error as e:
+            freturn = e
+
+        finally:
+            cursor.close()
+            return freturn
