@@ -232,3 +232,17 @@ class ctpysql:
         finally:
             cursor.close()
             return freturn
+
+    def advanced_commit(self, query):
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(query)
+            self.conn.commit()
+            freturn = cursor.rowcount
+
+        except Error as e:
+            freturn = e
+
+        finally:
+            cursor.close()
+            return freturn
