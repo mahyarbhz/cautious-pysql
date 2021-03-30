@@ -129,6 +129,20 @@ Example:
 `between('products', None, 'id', 1, 4)`
 <hr>
 
+### Advanced Commit
+Row count return
+```
+query = "INSER INTO table (column) VALUES ('value')"
+advanced_commit(query)
+```
+
+Example:
+```python
+query = "INSER INTO products (name) VALUES ('Laptop')"
+advanced_commit(query)
+```
+<hr>
+
 ## Don't forget!
 Don't forget this is a class and you should call this functions from an object of class. A full example here:
 
