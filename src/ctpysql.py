@@ -233,6 +233,20 @@ class ctpysql:
             cursor.close()
             return freturn
 
+    def top(self, table_name, count):
+        sql = "SELECT TOP {0} * FROM {1}".format(count, table_name)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(sql, data)
+            freturn = cursor.fetchall()
+
+        except Error as e:
+            freturn = e
+
+        finally:
+            cursor.close()
+            return freturn
+
     def advanced_commit(self, query):
         cursor = self.conn.cursor()
         try:
