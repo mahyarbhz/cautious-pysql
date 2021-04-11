@@ -52,12 +52,7 @@ class ctpysql:
             if i < len(data.items())-1:
                 sql += " AND "
 
-        if type == 'dic' or type == 'dictionary':
-            cursor = self.conn.cursor(dictionary=True)
-
-        else:
-            cursor = self.conn.cursor()
-
+        cursor = self.conn.cursor(dictionary=True) if type == 'dic' or type == 'dictionary' else cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
             if case == 'all':
@@ -79,12 +74,7 @@ class ctpysql:
     def fetchall(self, table_name, type=None):
         # type: dic|dictionary or ... (everything else fetch it simply)
         sql = "SELECT * FROM {0}".format(table_name)
-        if type == 'dic' or type == 'dictionary':
-            cursor = self.conn.cursor(dictionary=True)
-
-        else:
-            cursor = self.conn.cursor()
-
+        cursor = self.conn.cursor(dictionary=True) if type == 'dic' or type == 'dictionary' else cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
             freturn = cursor.fetchall()
@@ -113,11 +103,7 @@ class ctpysql:
                 sql += ", "
 
         if condition:
-            if type(condition_value) is str:
-                sql += " WHERE {0} = '{1}'".format(condition, condition_value)
-
-            else:
-                sql += " WHERE {0} = {1}".format(condition, condition_value)
+            sql += " WHERE {0} = '{1}'".format(condition, condition_value) if type(condition_value) is str else " WHERE {0} = {1}".format(condition, condition_value)
 
         cursor = self.conn.cursor()
         try:
@@ -216,12 +202,7 @@ class ctpysql:
         # type: dic|dictionary or ... (everything else fetch it simply)
         sql = "SELECT * FROM {0} WHERE {1} BETWEEN %s AND %s".format(table_name, condition_column)
         data = (firstpram, secondpram)
-        if type == 'dic' or type == 'dictionary':
-            cursor = self.conn.cursor(dictionary=True)
-
-        else:
-            cursor = self.conn.cursor()
-
+        cursor = self.conn.cursor(dictionary=True) if type == 'dic' or type == 'dictionary' else cursor = self.conn.cursor()
         try:
             cursor.execute(sql, data)
             freturn = cursor.fetchall()
