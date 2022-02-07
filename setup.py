@@ -1,10 +1,11 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name='ctpysql',
+    packages = find_packages(),
     version='1.4.5',
     description='This library helps you run MYSQL queries as fast as possible 🚄🔥!',
     py_modules=["ctpysql"],

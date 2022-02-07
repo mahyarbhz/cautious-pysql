@@ -11,7 +11,7 @@ class ctpysql:
         try:
             cursor.execute(sql)
             self.conn.commit()
-            freturn = "Success"
+            freturn = 1
 
         except Error as e:
             freturn = e
@@ -21,7 +21,7 @@ class ctpysql:
             return freturn
 
     def insert (self, table_name, dic):
-        # dic: insert values with {'dic': 'dictionary'}
+        # dic: insert values with dictionary
         columns = ', '.join("`" + str(i).replace('/', '_') + "`" for i in dic.keys())
         values = ', '.join("'" + str(i).replace('/', '_') + "'" for i in dic.values())
         sql = "INSERT INTO {0} ({1}) VALUES ({2})".format(table_name, columns, values)
@@ -38,7 +38,7 @@ class ctpysql:
             cursor.close()
             return freturn
 
-    def fetch(self, table_name, case, type, **data):
+    def fetch(self, table_name, case, **data):
         # case: all or one
         # type: dic|dictionary or ... (everything else fetch it simply)
         # data: kwargs condition data like: id=3
@@ -52,7 +52,7 @@ class ctpysql:
             if i < len(data.items())-1:
                 sql += " AND "
 
-        cursor = self.conn.cursor(dictionary=True) if type == 'dic' or type == 'dictionary' else cursor = self.conn.cursor()
+        cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
             if case == 'all':
@@ -71,10 +71,9 @@ class ctpysql:
             cursor.close()
             return freturn
 
-    def fetchall(self, table_name, type=None):
-        # type: dic|dictionary or ... (everything else fetch it simply)
+    def fetchall(self, table_name):
         sql = "SELECT * FROM {0}".format(table_name)
-        cursor = self.conn.cursor(dictionary=True) if type == 'dic' or type == 'dictionary' else cursor = self.conn.cursor()
+        cursor = self.conn.cursor()
         try:
             cursor.execute(sql)
             freturn = cursor.fetchall()
@@ -198,11 +197,10 @@ class ctpysql:
             cursor.close()
             return freturn
 
-    def between(self, table_name, type, condition_column, firstpram, secondpram):
-        # type: dic|dictionary or ... (everything else fetch it simply)
+    def between(self, table_name, condition_column, firstpram, secondpram):
         sql = "SELECT * FROM {0} WHERE {1} BETWEEN %s AND %s".format(table_name, condition_column)
         data = (firstpram, secondpram)
-        cursor = self.conn.cursor(dictionary=True) if type == 'dic' or type == 'dictionary' else cursor = self.conn.cursor()
+        cursor = self.conn.cursor()
         try:
             cursor.execute(sql, data)
             freturn = cursor.fetchall()
