@@ -131,7 +131,7 @@ Example:
 
 ### Advanced Commit
 Row count return
-```
+```python
 query = "INSER INTO table (column) VALUES ('value')"
 advanced_commit(query)
 ```
@@ -145,7 +145,7 @@ advanced_commit(query)
 
 ### Advanced Fetch
 Fetched items return
-```
+```python
 query = "SELECT * FROM table WHERE ..."
 advanced_fetch(query)
 ```
